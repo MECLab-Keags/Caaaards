@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Deck.h"
 
+/*! Specific playing card type deck, specialized from the base Deck */
 @interface PlayingCardDeck : Deck
 
 @end

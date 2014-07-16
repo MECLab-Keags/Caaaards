@@ -41,6 +41,25 @@
     }
 }
 
+- (NSInteger) match:(NSArray *)otherCards
+{
+	NSInteger score = 0;
+	if (![otherCards count]) {
+		return score;
+	}
+	
+	for (PlayingCard *card in otherCards) {
+		if ([self.suit isEqualToString:card.suit]) {
+			score += 1;
+		}
+		else if (card.rank == self.rank){
+			score += 4;
+		}
+	}
+	
+	return score;
+}
+
 + (NSArray *) validSuits
 {
     return @[@"♥",@"♦",@"♠",@"♣"];

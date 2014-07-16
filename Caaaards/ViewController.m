@@ -7,55 +7,57 @@
 //
 
 #import "ViewController.h"
-#import "Models/PlayingCard.h"
 #import "Models/PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface ViewController ()
-
-@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 @property (nonatomic) BOOL isFaceShowing;
-@property (nonatomic) int flipsCount;
-
-@property (strong, nonatomic) PlayingCardDeck *deck;
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
 @implementation ViewController
 
-- (PlayingCardDeck *)deck
+- (CardMatchingGame *) game
 {
-    if (!_deck)
-        _deck = [[PlayingCardDeck alloc] init];
-    
-    return _deck;
-}
-
-- (void)setFlipsCount:(int)flipsCount
-{
-    _flipsCount = flipsCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", flipsCount];
+	if (!_game)
+		_game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+												  usingDeck:[[PlayingCardDeck alloc] init]];
+	return _game;
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
-    if (self.isFaceShowing == YES) {
-        [sender setTitle:@"" forState:UIControlStateNormal];
-        [sender setBackgroundImage:[UIImage imageNamed:@"CardBack_Blue"]
-                          forState:UIControlStateNormal];
-        
-        self.isFaceShowing = NO;
-    } else {
-        Card *card = [self.deck drawRandomCard];
-        PlayingCard *randomCard = (PlayingCard *) card;
-        
-        [sender setTitle:randomCard.contents forState:UIControlStateNormal];
-        [sender setBackgroundImage:nil
-                          forState:UIControlStateNormal];
-        
-        self.isFaceShowing = YES;
-        self.flipsCount++;
-    }
+    NSUInteger chooseButtonIndex = [self.cardButtons indexOfObject:sender];
+	
+	// choose the card using the index of the sender within the outlet collection.
+	[self.game chooseCardAtIndex:chooseButtonIndex];
+	
+	[self updateUI];
+}
+
+- (void) updateUI
+{
+	// iterate over all the buttons and set the title and background imaged based on it's state.
+	for (UIButton *cardButton in self.cardButtons) {
+		NSUInteger index = [self.cardButtons indexOfObject:cardButton];
+		Card *card = [self.game cardAtIndex:index];
+		
+		[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+		[cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+	}
+}
+
+- (NSString *) titleForCard:(Card *) card
+{
+	return card.isChosen ? card.contents : @"";
+}
+
+- (UIImage *) backgroundImageForCard:(Card *) card
+{
+	return card.isChosen ? nil : [UIImage imageNamed:@"CardBack_Blue"];
 }
 
 @end
