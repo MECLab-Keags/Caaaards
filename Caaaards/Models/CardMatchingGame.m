@@ -54,6 +54,7 @@ static const int MISMATCH_PENALTY = 2;
 		return;
 	
 	if (card.isChosen) {
+		// toggle card from chosen to not chosen
 		card.chosen = NO;
 		return;
 	}
@@ -68,12 +69,12 @@ static const int MISMATCH_PENALTY = 2;
 				self.score -= MISMATCH_PENALTY;
 				otherCard.chosen = NO;
 			}
-			self.score -= COST_TO_CHOOSE;
 			break;
 		}
 	}
 	
 	card.chosen = YES;
+	self.score -= COST_TO_CHOOSE;
 }
 
 - (Card *) cardAtIndex:(NSUInteger)index

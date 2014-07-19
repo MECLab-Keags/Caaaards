@@ -12,6 +12,7 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property (nonatomic) BOOL isFaceShowing;
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -20,13 +21,6 @@
 
 @implementation ViewController
 
-- (CardMatchingGame *) game
-{
-	if (!_game)
-		_game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-												  usingDeck:[[PlayingCardDeck alloc] init]];
-	return _game;
-}
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
@@ -47,7 +41,27 @@
 		
 		[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
 		[cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+		
+		if (card.isMatched) {
+			cardButton.enabled = NO;
+			cardButton.alpha = 0.75;
+		}
 	}
+	self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+}
+
+// Abstract method, to be overridden by the subclass
+- (Deck *) initializeDeck
+{
+	return nil;
+}
+
+- (CardMatchingGame *) game
+{
+	if (!_game)
+		_game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+												  usingDeck:[self initializeDeck]];
+	return _game;
 }
 
 - (NSString *) titleForCard:(Card *) card
