@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 
-@interface ViewController : UIViewController
+@interface CardViewController : UIViewController
 
 - (Deck *) initializeDeck;
 

@@ -16,7 +16,7 @@
 		C80AD90C196A872F003C05A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C80AD90B196A872F003C05A0 /* main.m */; };
 		C80AD910196A872F003C05A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C80AD90F196A872F003C05A0 /* AppDelegate.m */; };
 		C80AD913196A872F003C05A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C80AD911196A872F003C05A0 /* Main.storyboard */; };
-		C80AD916196A872F003C05A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C80AD915196A872F003C05A0 /* ViewController.m */; };
+		C80AD916196A872F003C05A0 /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C80AD915196A872F003C05A0 /* CardGameViewController.m */; };
 		C80AD91F196A872F003C05A0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80AD91E196A872F003C05A0 /* XCTest.framework */; };
 		C80AD920196A872F003C05A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80AD8FF196A872F003C05A0 /* Foundation.framework */; };
 		C80AD921196A872F003C05A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80AD903196A872F003C05A0 /* UIKit.framework */; };
@@ -55,8 +55,8 @@
 		C80AD90E196A872F003C05A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C80AD90F196A872F003C05A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C80AD912196A872F003C05A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C80AD914196A872F003C05A0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C80AD915196A872F003C05A0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C80AD914196A872F003C05A0 /* CardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardGameViewController.h; sourceTree = "<group>"; };
+		C80AD915196A872F003C05A0 /* CardGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardGameViewController.m; sourceTree = "<group>"; };
 		C80AD91D196A872F003C05A0 /* CaaaardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaaaardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80AD91E196A872F003C05A0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C80AD926196A872F003C05A0 /* CaaaardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CaaaardsTests-Info.plist"; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				C80AD911196A872F003C05A0 /* Main.storyboard */,
-				C80AD914196A872F003C05A0 /* ViewController.h */,
-				C80AD915196A872F003C05A0 /* ViewController.m */,
+				C80AD914196A872F003C05A0 /* CardGameViewController.h */,
+				C80AD915196A872F003C05A0 /* CardGameViewController.m */,
 				C81256B61970BF660053E07A /* Images.xcassets */,
 				C80AD906196A872F003C05A0 /* Supporting Files */,
 				C871ADBC196FBC0400068116 /* Models */,
@@ -298,7 +298,7 @@
 				C80AD93E196AA6E3003C05A0 /* PlayingCard.m in Sources */,
 				C80AD939196A8956003C05A0 /* Deck.m in Sources */,
 				8C84ED25197A38D200A14E86 /* PlayingCardViewController.m in Sources */,
-				C80AD916196A872F003C05A0 /* ViewController.m in Sources */,
+				C80AD916196A872F003C05A0 /* CardGameViewController.m in Sources */,
 				C80AD910196A872F003C05A0 /* AppDelegate.m in Sources */,
 				8CEADAC31976717F003778A6 /* CardMatchingGame.m in Sources */,
 				C80AD941196BF4A4003C05A0 /* PlayingCardDeck.m in Sources */,
