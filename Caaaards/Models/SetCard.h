@@ -10,6 +10,9 @@
 
 @interface SetCard : Card
 
+/*! Initializes and instance of SetCard with the given shape, number, color and shading. */
+- (instancetype) initWithShape:(NSString *)shape number:(NSNumber *)number color:(UIColor *)color shading:(NSString *)shading;
+
 /*! Gets or sets the shape of the Set card */
 @property (nonatomic) NSString *shape;
 
@@ -17,10 +20,17 @@
 @property (nonatomic) NSUInteger number;
 
 /*! Gets or sets the color of the Set card */
-@property (nonatomic) NSString *color;
+@property (nonatomic) UIColor *color;
 
 /*! Gets or sets the shading of the Set card */
 @property (nonatomic) NSString *shading;
+
+/*! Key for the Outline shading */
+extern NSString *const ShadingOutlinedKey;
+/*! Key for the Solid shading */
+extern NSString *const ShadingSolidKey;
+/*! Key for the Shaded shading */
+extern NSString *const ShadingShadedKey;
 
 /*! Returns a list of valid shapes allowed for a Set card. */
 + (NSArray *) validShapes;
@@ -29,7 +39,7 @@
 + (NSArray *) validNumbers;
 
 /*! Returns a list of valid colors allowed for a Set card. */
-+ (NSArray *) validColors;
++ (NSDictionary *) validColors;
 
 /*! Returns a list of valid shadings allowed for a Set card. */
 + (NSArray *) validShadings;

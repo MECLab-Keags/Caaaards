@@ -259,6 +259,7 @@
                                 </state>
                                 <connections>
                                     <action selector="touchDealButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3h9-4M-N4W"/>
+                                    <action selector="touchDealButton" destination="twx-pz-m26" eventType="touchUpInside" id="fHR-2V-gbJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbw-Kf-qgb">

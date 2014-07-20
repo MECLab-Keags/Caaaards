@@ -15,9 +15,21 @@
 
 @implementation PlayingCardViewController
 
+- (void) updateButton:(UIButton *)button withCard:(Card *)card
+{
+	[super updateButton:button withCard:card];
+	
+	[button setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+}
+
 - (Deck *) initializeDeck
 {
 	return [[PlayingCardDeck alloc] init];
+}
+
+- (NSString *) titleForCard:(Card *) card
+{
+	return card.isChosen ? card.contents : @"";
 }
 
 @end

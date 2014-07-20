@@ -16,9 +16,22 @@
 	self = [super init];
 	if (!self) return self;
 	
-	NSArray *matrix = @[[SetCard validShapes], [SetCard validNumbers], [SetCard validColors], [SetCard validShadings]];
-	
-	
+	NSDictionary *colors = [SetCard validColors];
+	for (NSString *shape in [SetCard validShapes]) {
+		for (NSNumber *number in [SetCard validNumbers]) {
+			for (NSString *colorKey in colors) {
+				UIColor *color = [colors objectForKey:colorKey];
+				for (NSString *shading in [SetCard validShadings]) {
+					SetCard *card = [[SetCard alloc] initWithShape:shape
+															number:number
+															 color:color
+														   shading:shading];
+					
+					[self addCard:card];
+				}
+			}
+		}
+	}
 	
 	return self;
 }

@@ -44,12 +44,20 @@
 		NSUInteger index = [self.cardButtons indexOfObject:cardButton];
 		Card *card = [self.game cardAtIndex:index];
 		
-		[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+		if (card.isMatched) {
+			cardButton.enabled = NO;
+			cardButton.alpha = 0.75;
+		}
+		
+		[self updateButton:cardButton withCard:card];
 		[cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-		cardButton.enabled = !card.isMatched;
-		cardButton.alpha = card.isMatched ? 0.75 : 1.0;
 	}
 	self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+}
+
+- (void) updateButton:(UIButton *)button withCard:(Card *)card
+{
+	// nothing to do here, should be overridden by the subclass.
 }
 
 // Abstract method, to be overridden by the subclass
@@ -64,11 +72,6 @@
 		_game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
 												  usingDeck:[self initializeDeck]];
 	return _game;
-}
-
-- (NSString *) titleForCard:(Card *) card
-{
-	return card.isChosen ? card.contents : @"";
 }
 
 - (UIImage *) backgroundImageForCard:(Card *) card

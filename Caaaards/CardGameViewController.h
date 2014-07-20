@@ -12,7 +12,10 @@
 
 @interface CardGameViewController : UIViewController
 
-// Abstract method, to be overridden by the subclass
+/*! Overridable message executed to update the specified button using the given card. */
+- (void) updateButton:(UIButton *) button withCard:(Card *) card;
+
+/*! Abstract message to initialize the deck of cards. */
 - (Deck *) initializeDeck;
 
 @end
