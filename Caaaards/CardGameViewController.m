@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 MtEden CodeLab. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CardGameViewController.h"
 #import "Models/PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
-@interface ViewController ()
+@interface CardGameViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
@@ -19,8 +19,13 @@
 
 @end
 
-@implementation ViewController
+@implementation CardGameViewController
 
+- (IBAction)touchDealButton
+{
+	self.game = nil;
+	[self updateUI];
+}
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
@@ -41,11 +46,8 @@
 		
 		[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
 		[cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-		
-		if (card.isMatched) {
-			cardButton.enabled = NO;
-			cardButton.alpha = 0.75;
-		}
+		cardButton.enabled = !card.isMatched;
+		cardButton.alpha = card.isMatched ? 0.75 : 1.0;
 	}
 	self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }

@@ -10,8 +10,9 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 
-@interface CardViewController : UIViewController
+@interface CardGameViewController : UIViewController
 
+// Abstract method, to be overridden by the subclass
 - (Deck *) initializeDeck;
 
 @end
