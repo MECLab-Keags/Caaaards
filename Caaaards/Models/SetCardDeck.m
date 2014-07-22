@@ -16,15 +16,13 @@
 	self = [super init];
 	if (!self) return self;
 	
-	NSDictionary *colors = [SetCard validColors];
 	for (NSString *shape in [SetCard validShapes]) {
 		for (NSNumber *number in [SetCard validNumbers]) {
-			for (NSString *colorKey in colors) {
-				UIColor *color = [colors objectForKey:colorKey];
+			for (NSNumber *color in [SetCard validColors]) {
 				for (NSString *shading in [SetCard validShadings]) {
 					SetCard *card = [[SetCard alloc] initWithShape:shape
 															number:number
-															 color:color
+															 color:(SetCardColor)[color integerValue]
 														   shading:shading];
 					
 					[self addCard:card];

@@ -186,7 +186,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="touchDealButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="135-9I-fBq"/>
+                                    <action selector="touchDealButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cd7-u5-Fc6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -259,7 +259,7 @@
                                 </state>
                                 <connections>
                                     <action selector="touchDealButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3h9-4M-N4W"/>
-                                    <action selector="touchDealButton" destination="twx-pz-m26" eventType="touchUpInside" id="fHR-2V-gbJ"/>
+                                    <action selector="touchDealButton" destination="twx-pz-m26" eventType="touchUpInside" id="tH4-i2-BQy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbw-Kf-qgb">

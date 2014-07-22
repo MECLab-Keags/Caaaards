@@ -14,7 +14,7 @@
 @synthesize number = _number;
 @synthesize shading = _shading;
 
-- (instancetype) initWithShape:(NSString *)shape number:(NSNumber *)number color:(UIColor *)color shading:(NSString *)shading
+- (instancetype) initWithShape:(NSString *)shape number:(NSNumber *)number color:(SetCardColor)color shading:(NSString *)shading
 {
 	self = [super init];
 	if (!self) return self;
@@ -54,14 +54,10 @@
 	return [[SetCard validNumbers] containsObject:[NSNumber numberWithUnsignedInteger:_number]] ? _number : NSUIntegerMax;
 }
 
-- (void) setColor:(UIColor *)color
+- (void) setColor:(SetCardColor)color
 {
-	for (NSString *colorKey in [SetCard validColors]) {
-		UIColor *validColor = [[SetCard validColors] objectForKey:colorKey];
-		if ([validColor isEqual:color]) {
-			_color = color;
-			break;
-		}
+	if ([[SetCard validColors] containsObject:@(color)]) {
+		_color = color;
 	}
 }
 
@@ -70,10 +66,6 @@
 	if (![[SetCard validShadings] containsObject:shading]) return;
 	_shading = shading;
 }
-
-static const NSString *COLOR_RED_KEY = @"red";
-static const NSString *COLOR_PURPLE_KEY = @"purple";
-static const NSString *COLOR_GREEN_KEY	= @"green";
 
 NSString *const ShadingOutlinedKey = @"outline";
 NSString *const ShadingSolidKey = @"solid";
@@ -85,16 +77,14 @@ NSString *const ShadingShadedKey = @"shaded";
 	return @[@"▲", @"●", @"■"];
 }
 
++ (NSArray *) validColors
+{
+	return @[@(RedSetCardColor), @(GreenSetCardColor), @(PurpleSetCardColor)];
+}
+
 + (NSArray *) validNumbers
 {
 	return @[@1, @2, @3];
-}
-
-+ (NSDictionary *) validColors
-{
-	return @{ COLOR_RED_KEY:[UIColor redColor],
-			  COLOR_PURPLE_KEY:[UIColor purpleColor],
-			  COLOR_GREEN_KEY:[UIColor greenColor] };
 }
 
 + (NSArray *) validShadings

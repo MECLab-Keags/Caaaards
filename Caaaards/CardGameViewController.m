@@ -21,6 +21,11 @@
 
 @implementation CardGameViewController
 
+- (void)viewDidLoad
+{
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"felt1"]]];
+}
+
 - (IBAction)touchDealButton
 {
 	self.game = nil;

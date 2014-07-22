@@ -10,8 +10,15 @@
 
 @interface SetCard : Card
 
+typedef NS_ENUM(NSInteger, SetCardColor)
+{
+	RedSetCardColor,
+	GreenSetCardColor,
+	PurpleSetCardColor
+};
+
 /*! Initializes and instance of SetCard with the given shape, number, color and shading. */
-- (instancetype) initWithShape:(NSString *)shape number:(NSNumber *)number color:(UIColor *)color shading:(NSString *)shading;
+- (instancetype) initWithShape:(NSString *)shape number:(NSNumber *)number color:(SetCardColor)color shading:(NSString *)shading;
 
 /*! Gets or sets the shape of the Set card */
 @property (nonatomic) NSString *shape;
@@ -20,7 +27,7 @@
 @property (nonatomic) NSUInteger number;
 
 /*! Gets or sets the color of the Set card */
-@property (nonatomic) UIColor *color;
+@property (nonatomic) SetCardColor color;
 
 /*! Gets or sets the shading of the Set card */
 @property (nonatomic) NSString *shading;
@@ -39,7 +46,7 @@ extern NSString *const ShadingShadedKey;
 + (NSArray *) validNumbers;
 
 /*! Returns a list of valid colors allowed for a Set card. */
-+ (NSDictionary *) validColors;
++ (NSArray *) validColors;
 
 /*! Returns a list of valid shadings allowed for a Set card. */
 + (NSArray *) validShadings;

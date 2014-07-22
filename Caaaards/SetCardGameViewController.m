@@ -28,8 +28,10 @@
 	if (![card isKindOfClass:[SetCard class]]) return;
 	
 	if (!card.isChosen) {
-		NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@""
-																				  attributes:@{ NSFontAttributeName:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+		NSMutableAttributedString *title = [[NSMutableAttributedString alloc]
+											initWithString:@""
+												attributes:@{ NSFontAttributeName:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+		
 		[button setAttributedTitle:title forState:UIControlStateNormal];
 		return;
 	}
@@ -40,22 +42,36 @@
 	if ([setCard.shading isEqualToString:ShadingSolidKey]) {
 		// Solid Sharding: Set just the forgroud color on the text.
 		[title addAttribute:NSForegroundColorAttributeName
-					  value:setCard.color
+					  value:[self colorFrom:setCard.color]
 					  range:NSMakeRange(0, [title length])];
 		
 	} else if ([setCard.shading isEqualToString:ShadingOutlinedKey]){
 		// Shaded shading: Set a semi-transparent background color on the text.
-		[title addAttributes:@{ NSBackgroundColorAttributeName:[setCard.color colorWithAlphaComponent:0.75],
+		[title addAttributes:@{ NSBackgroundColorAttributeName:[[self colorFrom:setCard.color] colorWithAlphaComponent:0.75],
 								NSFontAttributeName:[UIFont systemFontOfSize:25.0],}
 					   range:NSMakeRange(0, [title length])];
 		
 	} else if ([setCard.shading isEqualToString:ShadingShadedKey]) {
 		// Shaded Outlined: Set the outline;
-		[title addAttributes:@{ NSStrokeColorAttributeName:setCard.color,
+		[title addAttributes:@{ NSStrokeColorAttributeName:[self colorFrom:setCard.color],
 								NSStrokeWidthAttributeName:@3 }
 					   range:NSMakeRange(0, [title length])];
 	}
 	[button setAttributedTitle:title forState:UIControlStateNormal];
+}
+
+- (UIColor *) colorFrom:(SetCardColor)color
+{
+	switch (color) {
+		case RedSetCardColor:
+			return [UIColor redColor];
+		case GreenSetCardColor:
+			return [UIColor greenColor];
+		case PurpleSetCardColor:
+			return [UIColor purpleColor];
+		default:
+			return [UIColor blackColor];
+	}
 }
 
 @end
